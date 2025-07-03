@@ -1,0 +1,19 @@
+{
+  "name": "nodejscourse",
+  "version": "1.0.0",
+  "description": "test node",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Devattom/nodejsCourse.git"
+  },
+  "author": "thomas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Devattom/nodejsCourse/issues"
+  },
+  "homepage": "https://github.com/Devattom/nodejsCourse#readme"
+}
