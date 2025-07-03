@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Devattom/nodejsCourse/issues"
   },
-  "homepage": "https://github.com/Devattom/nodejsCourse#readme"
+  "homepage": "https://github.com/Devattom/nodejsCourse#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
 }
