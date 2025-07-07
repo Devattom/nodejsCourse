@@ -17,9 +17,11 @@
   },
   "homepage": "https://github.com/Devattom/nodejsCourse#readme",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "serve-favicon": "^2.5.1"
   },
   "devDependencies": {
+    "morgan": "^1.10.0",
     "nodemon": "^3.1.10"
   }
 }
