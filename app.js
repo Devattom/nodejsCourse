@@ -1,10 +1,10 @@
 const express = require('express');
 const morgan = require('morgan');
 const favicon = require('serve-favicon');
-const { Sequelize } = require('sequelize');
-const { success } = require('./helper');
+const { Sequelize, DataTypes } = require('sequelize');
 const parser = require('body-parser');
 const { success, getUniqueId } = require('./helper');
+const PokemonModel = require('./src/models/pokemon');
 
 let pokemons = require('./mock-pokemon');
 
@@ -28,6 +28,26 @@ const sequelize = new Sequelize(
 sequelize.authenticate()
     .then(_ => console.log('La connexion à la BDD a bien été établie.'))
     .catch(error => console.error(`Impossible de se connecter à la bdd ${error}`))
+
+const Pokemon = PokemonModel(sequelize, DataTypes);
+
+sequelize.sync({ force: true })
+    .then(_ => {
+        console.log('La base de donnée a bien été sync');
+
+        pokemons.map(pokemon => {
+            Pokemon.create({
+                name: pokemon.name,
+                hp: pokemon.hp,
+                cp: pokemon.cp,
+                picture: pokemon.picture,
+                types: pokemon.types.join(),
+            }).then(pokemon => {
+                console.log(pokemon.toJSON());
+            })
+        })
+
+    })
 
 app
     .use(favicon(__dirname + '/favicon.ico'))
