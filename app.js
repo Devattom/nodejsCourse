@@ -1,6 +1,8 @@
 const express = require('express');
 const morgan = require('morgan');
 const favicon = require('serve-favicon');
+const { Sequelize } = require('sequelize');
+const { success } = require('./helper');
 const parser = require('body-parser');
 const { success, getUniqueId } = require('./helper');
 
@@ -8,6 +10,24 @@ let pokemons = require('./mock-pokemon');
 
 const app = express();
 const port = 3000;
+
+const sequelize = new Sequelize(
+    'nodeCourse',
+    'root',
+    'root',
+    {
+        host: 'localhost',
+        dialect: 'mariadb',
+        dialectOptions: {
+            timezone: 'Etc/GMT-2'
+        },
+        logging: false
+    }
+)
+
+sequelize.authenticate()
+    .then(_ => console.log('La connexion à la BDD a bien été établie.'))
+    .catch(error => console.error(`Impossible de se connecter à la bdd ${error}`))
 
 app
     .use(favicon(__dirname + '/favicon.ico'))

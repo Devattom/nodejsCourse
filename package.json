@@ -18,6 +18,8 @@
   "homepage": "https://github.com/Devattom/nodejsCourse#readme",
   "dependencies": {
     "express": "^5.1.0",
+    "mariadb": "^3.4.4",
+    "sequelize": "^6.37.7",
     "serve-favicon": "^2.5.1"
   },
   "devDependencies": {
