@@ -3,8 +3,9 @@ const { Sequelize, DataTypes } = require('sequelize')
 const PokemonModel = require('../models/pokemon')
 const pokemons = require('./mock-pokemon')
 
-const sequelize = new Sequelize('pokedex', 'root', '', {
+const sequelize = new Sequelize('nodeCourse', 'root', 'root', {
     host: 'localhost',
+    port: 3308,
     dialect: 'mariadb',
     dialectOptions: {
         timezone: 'Etc/GMT-2',
@@ -22,7 +23,7 @@ const initDb = () => {
                 hp: pokemon.hp,
                 cp: pokemon.cp,
                 picture: pokemon.picture,
-                types: pokemon.types.join()
+                types: pokemon.types
             }).then(pokemon => console.log(pokemon.toJSON()))
         })
         console.log('La base de donnée a bien été initialisée !')
